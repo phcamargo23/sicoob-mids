@@ -10,22 +10,22 @@ import java.time.LocalDateTime;
 public class MerchantIdRequest {
 
     @NotNull(message = "O código sequencial do merchant é obrigatório")
-    private Long cdSeqMerchantId;
+    private Long cdSeqId;
 
-    @NotBlank(message = "O nome do merchant é obrigatório")
-    private String dsMerchantName;
-
-    @NotBlank(message = "O MID é obrigatório")
+    @NotBlank(message = "O código do MID é obrigatório")
     private String cdMid;
 
-    @NotBlank(message = "A bandeira (flag) é obrigatória")
-    private String dsFlag;
+    @NotBlank(message = "O nome do merchant é obrigatório")
+    private String dsName;
+
+    @NotBlank(message = "A bandeira é obrigatória")
+    private String dsBrand;
 
     @NotNull(message = "A data de carga é obrigatória")
-    private LocalDateTime dtLoad;
+    private LocalDateTime dtLoadedAt;
 
-    private Integer bolSituation;
+    private Boolean stActive;
 
-    private LocalDateTime dtChange;
+    private LocalDateTime dtUpdatedAt;
 
 }

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class MerchantIdPK implements Serializable {
 
-    private Long cdSeqMerchantId;
-    private String dsFlag;
+    private Long cdSeqId;
+    private String dsBrand;
 
 }

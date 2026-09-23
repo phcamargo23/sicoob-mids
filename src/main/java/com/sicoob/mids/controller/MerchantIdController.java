@@ -2,6 +2,7 @@ package com.sicoob.mids.controller;
 
 import com.sicoob.mids.dto.MerchantIdRequest;
 import com.sicoob.mids.dto.MerchantIdResponse;
+import com.sicoob.mids.dto.MerchantIdStatusRequest;
 import com.sicoob.mids.service.MerchantIdService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,13 @@ public class MerchantIdController {
     }
 
     @GetMapping
-    public ResponseEntity<List<MerchantIdResponse>> listarTodos() {
-        return ResponseEntity.ok(merchantIdService.listarTodos());
+    public ResponseEntity<List<MerchantIdResponse>> listarTudo() {
+        return ResponseEntity.ok(merchantIdService.listarTudo());
     }
 
-    @GetMapping("/{cdSeqMerchantId}/{dsFlag}")
-    public ResponseEntity<MerchantIdResponse> buscarPorId(@PathVariable Long cdSeqMerchantId, @PathVariable String dsFlag) {
-        return ResponseEntity.ok(merchantIdService.buscarPorId(cdSeqMerchantId, dsFlag));
+    @GetMapping("/{cdSeqId}/{dsBrand}")
+    public ResponseEntity<MerchantIdResponse> buscarPorId(@PathVariable Long cdSeqId, @PathVariable String dsBrand) {
+        return ResponseEntity.ok(merchantIdService.buscarPorId(cdSeqId, dsBrand));
     }
 
     @PostMapping
@@ -36,15 +37,19 @@ public class MerchantIdController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PutMapping("/{cdSeqMerchantId}/{dsFlag}")
-    public ResponseEntity<MerchantIdResponse> atualizar(@PathVariable Long cdSeqMerchantId, @PathVariable String dsFlag,
-                                                         @Valid @RequestBody MerchantIdRequest request) {
-        return ResponseEntity.ok(merchantIdService.atualizar(cdSeqMerchantId, dsFlag, request));
+    @PutMapping("/{cdSeqId}/{dsBrand}")
+    public ResponseEntity<MerchantIdResponse> atualizar(@PathVariable Long cdSeqId, @PathVariable String dsBrand, @Valid @RequestBody MerchantIdRequest request) {
+        return ResponseEntity.ok(merchantIdService.atualizar(cdSeqId, dsBrand, request));
     }
 
-    @DeleteMapping("/{cdSeqMerchantId}/{dsFlag}")
-    public ResponseEntity<Void> deletar(@PathVariable Long cdSeqMerchantId, @PathVariable String dsFlag) {
-        merchantIdService.deletar(cdSeqMerchantId, dsFlag);
+    @PatchMapping("/{cdSeqId}/{dsBrand}/status")
+    public ResponseEntity<MerchantIdResponse> atualizarSituacaoAtivo(@PathVariable Long cdSeqId, @PathVariable String dsBrand, @Valid @RequestBody MerchantIdStatusRequest request) {
+        return ResponseEntity.ok(merchantIdService.atualizarSituacaoAtivo(cdSeqId, dsBrand, request));
+    }
+
+    @DeleteMapping("/{cdSeqId}/{dsBrand}")
+    public ResponseEntity<Void> deletar(@PathVariable Long cdSeqId, @PathVariable String dsBrand) {
+        merchantIdService.deletar(cdSeqId, dsBrand);
         return ResponseEntity.noContent().build();
     }
 

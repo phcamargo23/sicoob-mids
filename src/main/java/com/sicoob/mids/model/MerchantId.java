@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(
-        name = "tb_merchant_id",
-        schema = "CEIBO",
-        uniqueConstraints = @UniqueConstraint(name = "ak_tb_merchant_id", columnNames = {"cd_mid", "ds_flag"})
+        name = "merchantId",
+        schema = "MIDS",
+        uniqueConstraints = @UniqueConstraint(name = "ak_tb_merchant_id", columnNames = {"cd_mid", "ds_brand"})
 )
 @IdClass(MerchantIdPK.class)
 @Data
@@ -25,26 +25,26 @@ import java.time.LocalDateTime;
 public class MerchantId {
 
     @Id
-    @Column(name = "cd_seq_merchant_id", nullable = false)
-    private Long cdSeqMerchantId;
-
-    @Column(name = "ds_merchant_name", length = 100, nullable = false)
-    private String dsMerchantName;
+    @Column(name = "cd_seq_id", nullable = false)
+    private Long cdSeqId;
 
     @Column(name = "cd_mid", length = 50, nullable = false)
     private String cdMid;
 
+    @Column(name = "ds_name", length = 100, nullable = false)
+    private String dsName;
+
     @Id
-    @Column(name = "ds_flag", length = 50, nullable = false)
-    private String dsFlag;
+    @Column(name = "ds_brand", length = 50, nullable = false)
+    private String dsBrand;
 
-    @Column(name = "dt_load", nullable = false)
-    private LocalDateTime dtLoad;
+    @Column(name = "dt_loaded_at", nullable = false)
+    private LocalDateTime dtLoadedAt;
 
-    @Column(name = "bolsituation", nullable = false)
-    private Integer bolSituation;
+    @Column(name = "st_active", nullable = false)
+    private boolean stActive;
 
-    @Column(name = "dt_change")
-    private LocalDateTime dtChange;
+    @Column(name = "dt_updated_at")
+    private LocalDateTime dtUpdatedAt;
 
 }

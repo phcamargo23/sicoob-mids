@@ -10,23 +10,23 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class MerchantIdResponse {
 
-    private Long cdSeqMerchantId;
-    private String dsMerchantName;
+    private Long cdSeqId;
     private String cdMid;
-    private String dsFlag;
-    private LocalDateTime dtLoad;
-    private Integer bolSituation;
-    private LocalDateTime dtChange;
+    private String dsName;
+    private String dsBrand;
+    private LocalDateTime dtLoadedAt;
+    private boolean stActive;
+    private LocalDateTime dtUpdatedAt;
 
     public static MerchantIdResponse fromEntity(MerchantId merchantId) {
         return new MerchantIdResponse(
-                merchantId.getCdSeqMerchantId(),
-                merchantId.getDsMerchantName(),
+                merchantId.getCdSeqId(),
                 merchantId.getCdMid(),
-                merchantId.getDsFlag(),
-                merchantId.getDtLoad(),
-                merchantId.getBolSituation(),
-                merchantId.getDtChange()
+                merchantId.getDsName(),
+                merchantId.getDsBrand(),
+                merchantId.getDtLoadedAt(),
+                merchantId.isStActive(),
+                merchantId.getDtUpdatedAt()
         );
     }
 
